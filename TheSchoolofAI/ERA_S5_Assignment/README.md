@@ -1,4 +1,4 @@
-# This Readme contains all the information about the Session 5 Assignment
+# Session 5 Assignment
 ## Base file ERA_S5.ipynb
 ### This file consists of the base notebook to train and test the model on MNIST dataset for Digit classification. Below is the code block wise detailed explination 
 #### Code Block 1.  
@@ -36,6 +36,9 @@
    4.1 Train the model 
    4.2 Report the Training accuracy and Training loss 
    4.3 Test the model on Test data and report the Test accuracy and loss 
+#### Code Block 11. 
+##### This code block prints the Training and Testing loss and accuracy
+***Maximum test accuracy of 99.24% is achieved in 16th Epoch*** 
 
 ## model.py
 ### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the network details and model summary:  
