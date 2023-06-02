@@ -85,19 +85,20 @@ Estimated Total Size (MB): 2.94
 
 ## utils.py 
 ### This file has 3 methods, "GetCorrectPredCount", "train" and "test" : 
-1. ***GetCorrectPredCount :*** This method counts the correct predictions by comparing the model prediction with ground truth and increments the count if the prediction is accurate. 
-2. ***train:***  
-   2.1 Runs the loop for each batch (512 images from train_data) 
-   2.2 Gets the prediction from the model 
-   2.3 calculate the loss for each image prediction, performs backpropagation, increments the learning rate as defined for next iteration 
-   2.4 Keeps the track of correct predictions by comparing to the ground truth, training accuracy and training loss in each epoch (i.e. for the batch of 512 images) 
-3. ***test:*** 
-   3.1 Runs the loop for each batch (512 images from train_data) 
-   3.2 Gets the prediction from the model 
-   3.3 calculate the loss for each image prediction 
-   3.4 Keeps the track of correct predictions by comparing to the ground truth, test accuracy and test loss in each epoch (i.e. for the batch of 512 images) 
-4. ***printTrainTest_LossAcc*** 
-   4.1 This method prints the train_loss, test_loss and train and test accuracy using matplotlib.pyplot library
+1. **GetCorrectPredCount :** This method counts the correct predictions by comparing the model prediction with ground truth and increments the count if the prediction is accurate. 
+2. **train:**  
+   2.1 Runs the loop for each batch (512 images from train_data)  
+   2.2 Gets the prediction from the model  
+   2.3 calculate the loss for each image prediction, performs backpropagation, increments the learning rate as defined for next iteration  
+   2.4 Keeps the track of correct predictions by comparing to the ground truth, training accuracy and training loss in each epoch (i.e. for the batch of 512 images)  
+3. **test:**  
+   3.1 Runs the loop for each batch (512 images from train_data)  
+   3.2 Gets the prediction from the model  
+   3.3 calculate the loss for each image prediction  
+   3.4 Keeps the track of correct predictions by comparing to the ground truth, test accuracy and test loss in each epoch (i.e. for the batch of 512 images)  
+4. **printTrainTest_LossAcc**  
+   4.1 This method prints the train_loss, test_loss and train and test accuracy using matplotlib.pyplot library.  
+
  
 
 
