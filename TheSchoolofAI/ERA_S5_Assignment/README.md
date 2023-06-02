@@ -37,8 +37,8 @@
    4.2 Report the Training accuracy and Training loss 
    4.3 Test the model on Test data and report the Test accuracy and loss 
 #### Code Block 11. 
-##### This code block prints the Training and Testing loss and accuracy
-***Maximum test accuracy of 99.24% is achieved in 16th Epoch*** 
+##### This method prints the Training and Testing loss and accuracy.This has been defined in the [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy)
+***Maximum test accuracy of 99.29% is achieved in 19th Epoch*** 
 
 ## model.py
 ### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the network details and model summary:  
@@ -96,5 +96,8 @@ Estimated Total Size (MB): 2.94
    3.2 Gets the prediction from the model 
    3.3 calculate the loss for each image prediction 
    3.4 Keeps the track of correct predictions by comparing to the ground truth, test accuracy and test loss in each epoch (i.e. for the batch of 512 images) 
+4. ***printTrainTest_LossAcc*** 
+   4.1 This method prints the train_loss, test_loss and train and test accuracy using matplotlib.pyplot library
+ 
 
 
