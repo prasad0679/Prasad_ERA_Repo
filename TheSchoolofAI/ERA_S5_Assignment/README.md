@@ -27,6 +27,15 @@
 1. Code block to define the CNN. This code is modularzed into [model.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#modelpy)
 #### Code Block 8 and Code Block 9. 
 1. Code block to define the methods to train and test the model. This code is modularzed into [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy)
+#### Code Block 10. 
+##### This code block runs the training epochs and reports the train and test accuracy and loss 
+1. Stochastic gradient descent (SGD) optimizer has been used with learning rate = 0.01 
+2. Step size of 15 is used to reduce the learning rate by 10% after 15 epochs 
+3. Total number of Epochs = 20 
+4. Training and Testing methods from [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy) is used to 
+   4.1 Train the model 
+   4.2 Report the Training accuracy and Training loss 
+   4.3 Test the model on Test data and report the Test accuracy and loss 
 
 ## model.py
 ### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the network details and model summary:  
