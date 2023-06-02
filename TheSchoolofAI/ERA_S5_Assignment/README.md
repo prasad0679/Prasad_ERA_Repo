@@ -25,7 +25,8 @@
 1. This code block loads 12 random images from train_data and plot the same using "matplotlib.pyplot" library
 #### Code Block 7.  
 1. Code block to define the CNN. This code is modularzed into [model.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#modelpy)
-
+#### Code Block 8 and Code Block 9. 
+1. Code block to define the methods to train and test the model. This code is modularzed into [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy)
 
 ## model.py
 ### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the network details and model summary:  
@@ -47,8 +48,9 @@
 4. Conv2d-4: kernel: 3x3x128,256 : No. of parameters: 2,94,912+256 bias = 2,95,168
 5. Linear -5: 4096*50 + 50 bias = 204,850
 6. Linear -6: 50*10+10 bias = 510 
-
-***---------------------------------------------------------------- 
+ 
+```
+---------------------------------------------------------------- 
         Layer (type)               Output Shape         Param # 
    ================================================================ 
             Conv2d-1           [-1, 32, 26, 26]             320 
@@ -66,6 +68,7 @@ Input size (MB): 0.00
 Forward/backward pass size (MB): 0.67 
 Params size (MB): 2.26 
 Estimated Total Size (MB): 2.94 
-----------------------------------------------------------------*** 
+---------------------------------------------------------------- 
+``` 
 
 ## utils.py
