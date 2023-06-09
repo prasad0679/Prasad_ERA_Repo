@@ -21,4 +21,5 @@
 1. Depicts the calculation of derivative of ∂E_total against each of the weight in hidden layer i.e. w1, w2, w3 and w4
 ## Tabular calculations have been added to calcuate the loss ∂E_total based on these formulas
 ## Simulation performed for different learning rates to indicate the model training performance. This is depicted in the diagram below
-![Model Performance at different learning rates]([image link](https://github.com/prasad0679/Prasad_ERA_Repo/blob/master/TheSchoolofAI/ERA_S6_Assignment_PART1/Losses_atDiff_LearningRates.JPG))
+
+![Losses_atDiff_LearningRates](https://github.com/prasad0679/Prasad_ERA_Repo/assets/73907736/c0f7f91e-66fd-4e8c-8d3a-89f9709daddc)
