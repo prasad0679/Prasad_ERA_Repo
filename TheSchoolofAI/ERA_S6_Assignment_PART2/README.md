@@ -20,7 +20,7 @@
 2. Shape of the train_data is "torch.Size([60000, 28, 28])" and test_date shape is "torch.Size([10000, 28, 28]))"
 #### Code Block 5.  
 1. Define the data loader to load the train_data and test_data
-2. Batch Size is defined to load 512 images in each batch. "shuffle" parameter is set to "true"
+2. Batch Size is defined to load 128 images in each batch. "shuffle" parameter is set to "true"
 #### Code Block 6.  
 1. This code block loads 12 random images from train_data and plot the same using "matplotlib.pyplot" library
 #### Code Block 7.  
