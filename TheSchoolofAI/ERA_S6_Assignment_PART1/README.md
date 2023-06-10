@@ -1,5 +1,7 @@
 # Details about the simulation done in excel to demonstrate the back propagation
 
+![Backpropagation_Loss_v1](https://github.com/prasad0679/Prasad_ERA_Repo/assets/73907736/27a76237-780d-4c01-82bb-7ede3d975066)
+
 ## Details about the model network --> BLOCK 1
 1. Model has 2 inputs i1 and i2
 2. First Hidden layers has 2 neurons with values h1 and h2. First fully connected layer has 4 weights : w1 (0.15), w2(0.2), w3(0.25), w4(0.3)
