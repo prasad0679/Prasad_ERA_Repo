@@ -41,25 +41,7 @@
 ***Maximum test accuracy of 99.29% is achieved in 19th Epoch*** 
 
 ## model.py
-### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the network details and model summary:  
-1. **Iput image size : 28x28x1** 
-2. **Layer 1: Kernel: 3x3x1,32:** output: 26x26x32, r_out: (28+20-3)/1+1= 26 
-3. **Layer 2: Kernel: 3x3x32,64:** output: 24x24x64, r_out: (26+20-3)/1+1= 24 
-4. **Max pool Layer1: Kernel: 2x2x64,64:** output: 12x12x64, r_out: (24+20-3)/2+1= 12 
-5. **Layer 3: Kernel: 3x3x64,128:** output: 10x10x128, r_out: (12+20-3)/1+1= 10 
-6. **Layer 4: Kernel: 3x3x128,256:** output: 8x8x256, r_out: (10+20-3)/1+1= 8 
-7. **Max pool2: Kernel: 2x2x256,256:** output: 4x4x256,r_out: (10+20-3)/2+1= 4 
-8. **Total paramters in Kernel: 4096:** Flatten to get 50 output channels 
-9. **Flatten to get 10 output classes from 50**
-### Output of last layer is passed to softmax function
-### Following is the Model Summary and details of number of parameters in each layer 
-
-1. Conv2d-1: kernel: 3x3x1,32 : No. of parameters: 288+32 bias = 320
-2. Conv2d-2: kernel: 3x3x32,64 : No. of parameters: 18432+64 bias = 18496
-3. Conv2d-3: kernel: 3x3x64,128 : No. of parameters: 73728+128 bias = 73,856
-4. Conv2d-4: kernel: 3x3x128,256 : No. of parameters: 2,94,912+256 bias = 2,95,168
-5. Linear -5: 4096*50 + 50 bias = 204,850
-6. Linear -6: 50*10+10 bias = 510 
+### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the model summary:  
  
 ```
 ----------------------------------------------------------------
