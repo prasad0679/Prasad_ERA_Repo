@@ -1,5 +1,5 @@
-# Session 6 Assignment
-## Base file ERA_S6_Assignment_v3.ipynb
+# Session 7 Assignment
+## Base file ERA_S7_Assignment_v5.ipynb
 ### This file consists of the base notebook to train and test the model on MNIST dataset for Digit classification. Below is the code block wise detailed explination 
 #### Code Block 1.  
 1. Import the necessary Pytorch libraries  
