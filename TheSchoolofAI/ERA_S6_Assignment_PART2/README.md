@@ -38,7 +38,7 @@
    4.3 Test the model on Test data and report the Test accuracy and loss 
 #### Code Block 11. 
 ##### This method prints the Training and Testing loss and accuracy.This has been defined in the [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy)
-***Maximum test accuracy of 99.29% is achieved in 19th Epoch*** 
+***Maximum test accuracy of 99.50% is achieved in 18th and 20th Epoch*** 
 
 ## model.py
 ### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the model summary:  
