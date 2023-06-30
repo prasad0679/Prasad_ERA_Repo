@@ -64,4 +64,7 @@ Estimated Total Size (MB): 3.83
 ----------------------------------------------------------------
 ```
 #### run.py
+##### This module consists of the "Performance" class which includes functions to train and test the model
 
+#### util.py
+##### This moddule consists of the utility class "Plot" and "plot_metrics" to plot the images
