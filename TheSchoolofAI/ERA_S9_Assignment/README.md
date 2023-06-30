@@ -7,12 +7,14 @@
 1. Draw.plotings: Used to plot the train and test images
 2. AlbumentationImageDataset : Main class to initialise the constructor
 3. loader :  Class to perform
-3.1 Perform the transforms using Albumentation library
-3.2 Returns the train and test loader iterators.
+4. Perform the transforms using Albumentation library
+5. Returns the train and test loader iterators.
 
 #### model.py 
 1. Define the main model network
 2. Function to return the model summary
+
+
 
 #### run.py
 
