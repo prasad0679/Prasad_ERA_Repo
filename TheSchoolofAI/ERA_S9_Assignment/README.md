@@ -7,7 +7,7 @@
 2. AlbumentationImageDataset : Main class to initialise the constructor
 3. loader :  Class to perform
    3.1 Perform the transforms using Albumentation library
-   3.2 Retturns the train and test loader iterators.  
+   3.2 Retturns the train and test loader iterators.
 #### Code Block 2. 
 1. Check the CUDA availability
 2. Copy the model.py into the google colab content
