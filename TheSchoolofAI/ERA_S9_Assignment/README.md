@@ -1,18 +1,19 @@
 # Session 9 Assignment
 ## Base file ERA_S9_Assignment_v1.ipynb
 ### This file consists of the base notebook to train and test the model on CIFAR10 dataset for image classification. Below is the structure
+
 #### dataload.py  
 ##### Consists of functions to load the CIFAR10 dataset and carry out the transfomrations using "Albumentation" library
 1. Draw.plotings: Used to plot the train and test images
 2. AlbumentationImageDataset : Main class to initialise the constructor
 3. loader :  Class to perform
-   3.1 Perform the transforms using Albumentation library
-   3.2 Retturns the train and test loader iterators.
-#### Code Block 2. 
-1. Check the CUDA availability
-2. Copy the model.py into the google colab content
-3. Copy the utils.py into the google colab content
-4. Import the methods from model.py and utils.py
+3.1 Perform the transforms using Albumentation library
+3.2 Returns the train and test loader iterators.
+
+#### model.py 
+1. Define the main model network
+2. Function to return the model summary
+
 #### Code Block 3. 
 1. Define the data transformations to be performed on training data 
    1.1 Center crop the image to do Data augmentation
