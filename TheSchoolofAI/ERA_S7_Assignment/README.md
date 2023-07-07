@@ -1,50 +1,56 @@
 # Session 7 Assignment
 ## Base file ERA_S7_Assignment_v5.ipynb
-### This file consists of the base notebook to train and test the model on MNIST dataset for Digit classification. Below is the code block wise detailed explination 
-#### Code Block 1.  
-1. Import the necessary Pytorch libraries  
-#### Code Block 2. 
-1. Check the CUDA availability
-2. Copy the model.py into the google colab content
-3. Copy the utils.py into the google colab content
-4. Import the methods from model.py and utils.py
-#### Code Block 3. 
-1. Define the data transformations to be performed on training data 
-   1.1 Center crop the image to do Data augmentation
-   1.2 Resize and perform the Random rotations
-   1.3 Standardize and Normalize the data as per overall dataset mean and one std. deviaton
- 2. Define the data transformations to be performed on test data 
-   2.1 Standardize and Normalize the data as per overall dataset mean and one std. deviaton
-#### Code Block 4.  
-1. Download the train_data and test_data from MNIST dataset and apply the data transformation
-2. Shape of the train_data is "torch.Size([60000, 28, 28])" and test_date shape is "torch.Size([10000, 28, 28]))"
-#### Code Block 5.  
-1. Define the data loader to load the train_data and test_data
-2. Batch Size is defined to load 128 images in each batch. "shuffle" parameter is set to "true"
-#### Code Block 6.  
-1. This code block loads 12 random images from train_data and plot the same using "matplotlib.pyplot" library
-#### Code Block 7.  
-1. Code block to define the CNN. This code is modularzed into [model.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#modelpy)
-#### Code Block 8 and Code Block 9. 
-1. Code block to define the methods to train and test the model. This code is modularzed into [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy)
-#### Code Block 10. 
-##### This code block runs the training epochs and reports the train and test accuracy and loss 
-1. Stochastic gradient descent (SGD) optimizer has been used with learning rate = 0.01 
-2. Step size of 15 is used to reduce the learning rate by 10% after 15 epochs 
-3. Total number of Epochs = 20 
-4. Training and Testing methods from [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy) is used to 
-   4.1 Train the model 
-   4.2 Report the Training accuracy and Training loss 
-   4.3 Test the model on Test data and report the Test accuracy and loss 
-#### Code Block 11. 
-##### This method prints the Training and Testing loss and accuracy.This has been defined in the [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy)
-***Maximum test accuracy of 99.50% is achieved in 18th and 20th Epoch*** 
+### This file consists of the model with 10,812 parameters and last 3 epoch achieving accuracy > 99.40%
 
 ## model.py
 ### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the model summary:  
  
 ```
-<add the momdel summary> 
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1            [-1, 4, 26, 26]              40
+              ReLU-2            [-1, 4, 26, 26]               0
+       BatchNorm2d-3            [-1, 4, 26, 26]               8
+           Dropout-4            [-1, 4, 26, 26]               0
+            Conv2d-5            [-1, 8, 24, 24]             296
+              ReLU-6            [-1, 8, 24, 24]               0
+       BatchNorm2d-7            [-1, 8, 24, 24]              16
+           Dropout-8            [-1, 8, 24, 24]               0
+         MaxPool2d-9            [-1, 8, 12, 12]               0
+           Conv2d-10            [-1, 8, 12, 12]              72
+             ReLU-11            [-1, 8, 12, 12]               0
+      BatchNorm2d-12            [-1, 8, 12, 12]              16
+          Dropout-13            [-1, 8, 12, 12]               0
+           Conv2d-14           [-1, 16, 10, 10]           1,168
+             ReLU-15           [-1, 16, 10, 10]               0
+      BatchNorm2d-16           [-1, 16, 10, 10]              32
+          Dropout-17           [-1, 16, 10, 10]               0
+           Conv2d-18             [-1, 32, 8, 8]           4,640
+             ReLU-19             [-1, 32, 8, 8]               0
+      BatchNorm2d-20             [-1, 32, 8, 8]              64
+          Dropout-21             [-1, 32, 8, 8]               0
+           Conv2d-22             [-1, 16, 8, 8]             528
+           Conv2d-23             [-1, 16, 6, 6]           2,320
+             ReLU-24             [-1, 16, 6, 6]               0
+      BatchNorm2d-25             [-1, 16, 6, 6]              32
+          Dropout-26             [-1, 16, 6, 6]               0
+           Conv2d-27             [-1, 10, 4, 4]           1,450
+             ReLU-28             [-1, 10, 4, 4]               0
+      BatchNorm2d-29             [-1, 10, 4, 4]              20
+          Dropout-30             [-1, 10, 4, 4]               0
+           Conv2d-31             [-1, 10, 4, 4]             110
+        AvgPool2d-32             [-1, 10, 1, 1]               0
+================================================================
+Total params: 10,812
+Trainable params: 10,812
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.41
+Params size (MB): 0.04
+Estimated Total Size (MB): 0.45
+---------------------------------------------------------------- 
 ``` 
 
 ## utils.py 
