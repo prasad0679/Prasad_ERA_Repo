@@ -34,7 +34,7 @@ test_incorrect_pred = {'images': [], 'ground_truths': [], 'predicted_vals': []}
 def GetCorrectPredCount(pPrediction, pLabels):
   return pPrediction.argmax(dim=1).eq(pLabels).sum().item()
 
-def train(model, device, train_loader, optimizer, criterion):
+def train(model, device, train_loader, optimizer):
   model.train()
   pbar = tqdm(train_loader)
 
@@ -66,7 +66,7 @@ def train(model, device, train_loader, optimizer, criterion):
   train_acc.append(100*correct/processed)
   train_losses.append(train_loss/len(train_loader))
 
-def test(model, device, test_loader,criterion):
+def test(model, device, test_loader):
     model.eval()
 
     test_loss = 0
