@@ -4,57 +4,158 @@
 ## Base file ERA_Session8_Assignment_GroupNorm_v1 --> using the GroupNorm
 ### This file consists of the model with 48,736 parameters and last 3 epoch achieving accuracy > 70%
 
-## model.py
-### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the model summary:  
+## model_bn.py --> Batch Normalization model summary
  
 ```
 ----------------------------------------------------------------
         Layer (type)               Output Shape         Param #
 ================================================================
-            Conv2d-1            [-1, 4, 26, 26]              40
-              ReLU-2            [-1, 4, 26, 26]               0
-       BatchNorm2d-3            [-1, 4, 26, 26]               8
-           Dropout-4            [-1, 4, 26, 26]               0
-            Conv2d-5            [-1, 8, 24, 24]             296
-              ReLU-6            [-1, 8, 24, 24]               0
-       BatchNorm2d-7            [-1, 8, 24, 24]              16
-           Dropout-8            [-1, 8, 24, 24]               0
-         MaxPool2d-9            [-1, 8, 12, 12]               0
-           Conv2d-10            [-1, 8, 12, 12]              72
-             ReLU-11            [-1, 8, 12, 12]               0
-      BatchNorm2d-12            [-1, 8, 12, 12]              16
-          Dropout-13            [-1, 8, 12, 12]               0
-           Conv2d-14           [-1, 16, 10, 10]           1,168
-             ReLU-15           [-1, 16, 10, 10]               0
-      BatchNorm2d-16           [-1, 16, 10, 10]              32
-          Dropout-17           [-1, 16, 10, 10]               0
-           Conv2d-18             [-1, 32, 8, 8]           4,640
-             ReLU-19             [-1, 32, 8, 8]               0
-      BatchNorm2d-20             [-1, 32, 8, 8]              64
-          Dropout-21             [-1, 32, 8, 8]               0
-           Conv2d-22             [-1, 16, 8, 8]             528
-           Conv2d-23             [-1, 16, 6, 6]           2,320
-             ReLU-24             [-1, 16, 6, 6]               0
-      BatchNorm2d-25             [-1, 16, 6, 6]              32
-          Dropout-26             [-1, 16, 6, 6]               0
-           Conv2d-27             [-1, 10, 4, 4]           1,450
-             ReLU-28             [-1, 10, 4, 4]               0
-      BatchNorm2d-29             [-1, 10, 4, 4]              20
-          Dropout-30             [-1, 10, 4, 4]               0
-           Conv2d-31             [-1, 10, 4, 4]             110
-        AvgPool2d-32             [-1, 10, 1, 1]               0
+            Conv2d-1           [-1, 32, 32, 32]             864
+              ReLU-2           [-1, 32, 32, 32]               0
+       BatchNorm2d-3           [-1, 32, 32, 32]              64
+           Dropout-4           [-1, 32, 32, 32]               0
+            Conv2d-5           [-1, 32, 32, 32]           9,216
+              ReLU-6           [-1, 32, 32, 32]               0
+       BatchNorm2d-7           [-1, 32, 32, 32]              64
+           Dropout-8           [-1, 32, 32, 32]               0
+            Conv2d-9           [-1, 16, 32, 32]             512
+        MaxPool2d-10           [-1, 16, 16, 16]               0
+           Conv2d-11           [-1, 32, 16, 16]           4,608
+             ReLU-12           [-1, 32, 16, 16]               0
+      BatchNorm2d-13           [-1, 32, 16, 16]              64
+          Dropout-14           [-1, 32, 16, 16]               0
+           Conv2d-15           [-1, 32, 16, 16]           9,216
+             ReLU-16           [-1, 32, 16, 16]               0
+      BatchNorm2d-17           [-1, 32, 16, 16]              64
+          Dropout-18           [-1, 32, 16, 16]               0
+           Conv2d-19           [-1, 16, 16, 16]             512
+        MaxPool2d-20             [-1, 16, 8, 8]               0
+           Conv2d-21             [-1, 32, 8, 8]           4,608
+             ReLU-22             [-1, 32, 8, 8]               0
+      BatchNorm2d-23             [-1, 32, 8, 8]              64
+          Dropout-24             [-1, 32, 8, 8]               0
+           Conv2d-25             [-1, 32, 6, 6]           9,216
+             ReLU-26             [-1, 32, 6, 6]               0
+      BatchNorm2d-27             [-1, 32, 6, 6]              64
+          Dropout-28             [-1, 32, 6, 6]               0
+           Conv2d-29             [-1, 32, 4, 4]           9,216
+             ReLU-30             [-1, 32, 4, 4]               0
+      BatchNorm2d-31             [-1, 32, 4, 4]              64
+          Dropout-32             [-1, 32, 4, 4]               0
+        AvgPool2d-33             [-1, 32, 1, 1]               0
+           Conv2d-34             [-1, 10, 1, 1]             320
 ================================================================
-Total params: 10,812
-Trainable params: 10,812
+Total params: 48,736
+Trainable params: 48,736
 Non-trainable params: 0
 ----------------------------------------------------------------
-Input size (MB): 0.00
-Forward/backward pass size (MB): 0.41
-Params size (MB): 0.04
-Estimated Total Size (MB): 0.45
+Input size (MB): 0.01
+Forward/backward pass size (MB): 2.81
+Params size (MB): 0.19
+Estimated Total Size (MB): 3.01
 ---------------------------------------------------------------- 
 ``` 
+## model_ln.py --> Layer Normalization model summary
 
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 32, 32, 32]             864
+              ReLU-2           [-1, 32, 32, 32]               0
+         GroupNorm-3           [-1, 32, 32, 32]              64
+           Dropout-4           [-1, 32, 32, 32]               0
+            Conv2d-5           [-1, 32, 32, 32]           9,216
+              ReLU-6           [-1, 32, 32, 32]               0
+         GroupNorm-7           [-1, 32, 32, 32]              64
+           Dropout-8           [-1, 32, 32, 32]               0
+            Conv2d-9           [-1, 16, 32, 32]             512
+        MaxPool2d-10           [-1, 16, 16, 16]               0
+           Conv2d-11           [-1, 32, 16, 16]           4,608
+             ReLU-12           [-1, 32, 16, 16]               0
+        GroupNorm-13           [-1, 32, 16, 16]              64
+          Dropout-14           [-1, 32, 16, 16]               0
+           Conv2d-15           [-1, 32, 16, 16]           9,216
+             ReLU-16           [-1, 32, 16, 16]               0
+        GroupNorm-17           [-1, 32, 16, 16]              64
+          Dropout-18           [-1, 32, 16, 16]               0
+           Conv2d-19           [-1, 16, 16, 16]             512
+        MaxPool2d-20             [-1, 16, 8, 8]               0
+           Conv2d-21             [-1, 32, 8, 8]           4,608
+             ReLU-22             [-1, 32, 8, 8]               0
+        GroupNorm-23             [-1, 32, 8, 8]              64
+          Dropout-24             [-1, 32, 8, 8]               0
+           Conv2d-25             [-1, 32, 6, 6]           9,216
+             ReLU-26             [-1, 32, 6, 6]               0
+        GroupNorm-27             [-1, 32, 6, 6]              64
+          Dropout-28             [-1, 32, 6, 6]               0
+           Conv2d-29             [-1, 32, 4, 4]           9,216
+             ReLU-30             [-1, 32, 4, 4]               0
+        GroupNorm-31             [-1, 32, 4, 4]              64
+          Dropout-32             [-1, 32, 4, 4]               0
+        AvgPool2d-33             [-1, 32, 1, 1]               0
+           Conv2d-34             [-1, 10, 1, 1]             320
+================================================================
+Total params: 48,736
+Trainable params: 48,736
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 2.81
+Params size (MB): 0.19
+Estimated Total Size (MB): 3.01
+----------------------------------------------------------------
+```
+## model_gn.py --> Group Normalization model summary : Group size = 2
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 32, 32, 32]             864
+              ReLU-2           [-1, 32, 32, 32]               0
+         GroupNorm-3           [-1, 32, 32, 32]              64
+           Dropout-4           [-1, 32, 32, 32]               0
+            Conv2d-5           [-1, 32, 32, 32]           9,216
+              ReLU-6           [-1, 32, 32, 32]               0
+         GroupNorm-7           [-1, 32, 32, 32]              64
+           Dropout-8           [-1, 32, 32, 32]               0
+            Conv2d-9           [-1, 16, 32, 32]             512
+        MaxPool2d-10           [-1, 16, 16, 16]               0
+           Conv2d-11           [-1, 32, 16, 16]           4,608
+             ReLU-12           [-1, 32, 16, 16]               0
+        GroupNorm-13           [-1, 32, 16, 16]              64
+          Dropout-14           [-1, 32, 16, 16]               0
+           Conv2d-15           [-1, 32, 16, 16]           9,216
+             ReLU-16           [-1, 32, 16, 16]               0
+        GroupNorm-17           [-1, 32, 16, 16]              64
+          Dropout-18           [-1, 32, 16, 16]               0
+           Conv2d-19           [-1, 16, 16, 16]             512
+        MaxPool2d-20             [-1, 16, 8, 8]               0
+           Conv2d-21             [-1, 32, 8, 8]           4,608
+             ReLU-22             [-1, 32, 8, 8]               0
+        GroupNorm-23             [-1, 32, 8, 8]              64
+          Dropout-24             [-1, 32, 8, 8]               0
+           Conv2d-25             [-1, 32, 6, 6]           9,216
+             ReLU-26             [-1, 32, 6, 6]               0
+        GroupNorm-27             [-1, 32, 6, 6]              64
+          Dropout-28             [-1, 32, 6, 6]               0
+           Conv2d-29             [-1, 32, 4, 4]           9,216
+             ReLU-30             [-1, 32, 4, 4]               0
+        GroupNorm-31             [-1, 32, 4, 4]              64
+          Dropout-32             [-1, 32, 4, 4]               0
+        AvgPool2d-33             [-1, 32, 1, 1]               0
+           Conv2d-34             [-1, 10, 1, 1]             320
+================================================================
+Total params: 48,736
+Trainable params: 48,736
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 2.81
+Params size (MB): 0.19
+Estimated Total Size (MB): 3.01
+----------------------------------------------------------------
+```
 ## utils.py 
 ### This file has 3 methods, "GetCorrectPredCount", "train" and "test" : 
 1. **GetCorrectPredCount :** This method counts the correct predictions by comparing the model prediction with ground truth and increments the count if the prediction is accurate. 
