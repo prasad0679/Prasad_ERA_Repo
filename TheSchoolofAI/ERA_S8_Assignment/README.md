@@ -1,52 +1,161 @@
 # Session 8 Assignment
-## Base file ERA_S8_Assignment_v5.ipynb
-### This file consists of the base notebook to train and test the model on MNIST dataset for Digit classification. Below is the code block wise detailed explination 
-#### Code Block 1.  
-1. Import the necessary Pytorch libraries  
-#### Code Block 2. 
-1. Check the CUDA availability
-2. Copy the model.py into the google colab content
-3. Copy the utils.py into the google colab content
-4. Import the methods from model.py and utils.py
-#### Code Block 3. 
-1. Define the data transformations to be performed on training data 
-   1.1 Center crop the image to do Data augmentation
-   1.2 Resize and perform the Random rotations
-   1.3 Standardize and Normalize the data as per overall dataset mean and one std. deviaton
- 2. Define the data transformations to be performed on test data 
-   2.1 Standardize and Normalize the data as per overall dataset mean and one std. deviaton
-#### Code Block 4.  
-1. Download the train_data and test_data from MNIST dataset and apply the data transformation
-2. Shape of the train_data is "torch.Size([60000, 28, 28])" and test_date shape is "torch.Size([10000, 28, 28]))"
-#### Code Block 5.  
-1. Define the data loader to load the train_data and test_data
-2. Batch Size is defined to load 128 images in each batch. "shuffle" parameter is set to "true"
-#### Code Block 6.  
-1. This code block loads 12 random images from train_data and plot the same using "matplotlib.pyplot" library
-#### Code Block 7.  
-1. Code block to define the CNN. This code is modularzed into [model.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#modelpy)
-#### Code Block 8 and Code Block 9. 
-1. Code block to define the methods to train and test the model. This code is modularzed into [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy)
-#### Code Block 10. 
-##### This code block runs the training epochs and reports the train and test accuracy and loss 
-1. Stochastic gradient descent (SGD) optimizer has been used with learning rate = 0.01 
-2. Step size of 15 is used to reduce the learning rate by 10% after 15 epochs 
-3. Total number of Epochs = 20 
-4. Training and Testing methods from [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy) is used to 
-   4.1 Train the model 
-   4.2 Report the Training accuracy and Training loss 
-   4.3 Test the model on Test data and report the Test accuracy and loss 
-#### Code Block 11. 
-##### This method prints the Training and Testing loss and accuracy.This has been defined in the [utils.py](https://github.com/prasad0679/Prasad_ERA_Repo/edit/master/TheSchoolofAI/ERA_S5_Assignment/README.md#utilspy)
-***Maximum test accuracy of 99.50% is achieved in 18th and 20th Epoch*** 
+## Base file ERA_Session8_Assignment_BN_v1.ipynb --> Using the BatchNorm
+## Base file ERA_Session8_Assignment_LayerNorm_v1 --> using the LayerNorm
+## Base file ERA_Session8_Assignment_GroupNorm_v1 --> using the GroupNorm
+### This file consists of the model with 48,736 parameters and last 3 epoch achieving accuracy > 70%
 
-## model.py
-### This file has 2 methods, "__init__" and "forward" which defines the CNN. Below is the model summary:  
+## model_bn.py --> Batch Normalization model summary
  
 ```
-<add the momdel summary> 
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 32, 32, 32]             864
+              ReLU-2           [-1, 32, 32, 32]               0
+       BatchNorm2d-3           [-1, 32, 32, 32]              64
+           Dropout-4           [-1, 32, 32, 32]               0
+            Conv2d-5           [-1, 32, 32, 32]           9,216
+              ReLU-6           [-1, 32, 32, 32]               0
+       BatchNorm2d-7           [-1, 32, 32, 32]              64
+           Dropout-8           [-1, 32, 32, 32]               0
+            Conv2d-9           [-1, 16, 32, 32]             512
+        MaxPool2d-10           [-1, 16, 16, 16]               0
+           Conv2d-11           [-1, 32, 16, 16]           4,608
+             ReLU-12           [-1, 32, 16, 16]               0
+      BatchNorm2d-13           [-1, 32, 16, 16]              64
+          Dropout-14           [-1, 32, 16, 16]               0
+           Conv2d-15           [-1, 32, 16, 16]           9,216
+             ReLU-16           [-1, 32, 16, 16]               0
+      BatchNorm2d-17           [-1, 32, 16, 16]              64
+          Dropout-18           [-1, 32, 16, 16]               0
+           Conv2d-19           [-1, 16, 16, 16]             512
+        MaxPool2d-20             [-1, 16, 8, 8]               0
+           Conv2d-21             [-1, 32, 8, 8]           4,608
+             ReLU-22             [-1, 32, 8, 8]               0
+      BatchNorm2d-23             [-1, 32, 8, 8]              64
+          Dropout-24             [-1, 32, 8, 8]               0
+           Conv2d-25             [-1, 32, 6, 6]           9,216
+             ReLU-26             [-1, 32, 6, 6]               0
+      BatchNorm2d-27             [-1, 32, 6, 6]              64
+          Dropout-28             [-1, 32, 6, 6]               0
+           Conv2d-29             [-1, 32, 4, 4]           9,216
+             ReLU-30             [-1, 32, 4, 4]               0
+      BatchNorm2d-31             [-1, 32, 4, 4]              64
+          Dropout-32             [-1, 32, 4, 4]               0
+        AvgPool2d-33             [-1, 32, 1, 1]               0
+           Conv2d-34             [-1, 10, 1, 1]             320
+================================================================
+Total params: 48,736
+Trainable params: 48,736
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 2.81
+Params size (MB): 0.19
+Estimated Total Size (MB): 3.01
+---------------------------------------------------------------- 
 ``` 
+## model_ln.py --> Layer Normalization model summary
 
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 32, 32, 32]             864
+              ReLU-2           [-1, 32, 32, 32]               0
+         GroupNorm-3           [-1, 32, 32, 32]              64
+           Dropout-4           [-1, 32, 32, 32]               0
+            Conv2d-5           [-1, 32, 32, 32]           9,216
+              ReLU-6           [-1, 32, 32, 32]               0
+         GroupNorm-7           [-1, 32, 32, 32]              64
+           Dropout-8           [-1, 32, 32, 32]               0
+            Conv2d-9           [-1, 16, 32, 32]             512
+        MaxPool2d-10           [-1, 16, 16, 16]               0
+           Conv2d-11           [-1, 32, 16, 16]           4,608
+             ReLU-12           [-1, 32, 16, 16]               0
+        GroupNorm-13           [-1, 32, 16, 16]              64
+          Dropout-14           [-1, 32, 16, 16]               0
+           Conv2d-15           [-1, 32, 16, 16]           9,216
+             ReLU-16           [-1, 32, 16, 16]               0
+        GroupNorm-17           [-1, 32, 16, 16]              64
+          Dropout-18           [-1, 32, 16, 16]               0
+           Conv2d-19           [-1, 16, 16, 16]             512
+        MaxPool2d-20             [-1, 16, 8, 8]               0
+           Conv2d-21             [-1, 32, 8, 8]           4,608
+             ReLU-22             [-1, 32, 8, 8]               0
+        GroupNorm-23             [-1, 32, 8, 8]              64
+          Dropout-24             [-1, 32, 8, 8]               0
+           Conv2d-25             [-1, 32, 6, 6]           9,216
+             ReLU-26             [-1, 32, 6, 6]               0
+        GroupNorm-27             [-1, 32, 6, 6]              64
+          Dropout-28             [-1, 32, 6, 6]               0
+           Conv2d-29             [-1, 32, 4, 4]           9,216
+             ReLU-30             [-1, 32, 4, 4]               0
+        GroupNorm-31             [-1, 32, 4, 4]              64
+          Dropout-32             [-1, 32, 4, 4]               0
+        AvgPool2d-33             [-1, 32, 1, 1]               0
+           Conv2d-34             [-1, 10, 1, 1]             320
+================================================================
+Total params: 48,736
+Trainable params: 48,736
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 2.81
+Params size (MB): 0.19
+Estimated Total Size (MB): 3.01
+----------------------------------------------------------------
+```
+## model_gn.py --> Group Normalization model summary : Group size = 2
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 32, 32, 32]             864
+              ReLU-2           [-1, 32, 32, 32]               0
+         GroupNorm-3           [-1, 32, 32, 32]              64
+           Dropout-4           [-1, 32, 32, 32]               0
+            Conv2d-5           [-1, 32, 32, 32]           9,216
+              ReLU-6           [-1, 32, 32, 32]               0
+         GroupNorm-7           [-1, 32, 32, 32]              64
+           Dropout-8           [-1, 32, 32, 32]               0
+            Conv2d-9           [-1, 16, 32, 32]             512
+        MaxPool2d-10           [-1, 16, 16, 16]               0
+           Conv2d-11           [-1, 32, 16, 16]           4,608
+             ReLU-12           [-1, 32, 16, 16]               0
+        GroupNorm-13           [-1, 32, 16, 16]              64
+          Dropout-14           [-1, 32, 16, 16]               0
+           Conv2d-15           [-1, 32, 16, 16]           9,216
+             ReLU-16           [-1, 32, 16, 16]               0
+        GroupNorm-17           [-1, 32, 16, 16]              64
+          Dropout-18           [-1, 32, 16, 16]               0
+           Conv2d-19           [-1, 16, 16, 16]             512
+        MaxPool2d-20             [-1, 16, 8, 8]               0
+           Conv2d-21             [-1, 32, 8, 8]           4,608
+             ReLU-22             [-1, 32, 8, 8]               0
+        GroupNorm-23             [-1, 32, 8, 8]              64
+          Dropout-24             [-1, 32, 8, 8]               0
+           Conv2d-25             [-1, 32, 6, 6]           9,216
+             ReLU-26             [-1, 32, 6, 6]               0
+        GroupNorm-27             [-1, 32, 6, 6]              64
+          Dropout-28             [-1, 32, 6, 6]               0
+           Conv2d-29             [-1, 32, 4, 4]           9,216
+             ReLU-30             [-1, 32, 4, 4]               0
+        GroupNorm-31             [-1, 32, 4, 4]              64
+          Dropout-32             [-1, 32, 4, 4]               0
+        AvgPool2d-33             [-1, 32, 1, 1]               0
+           Conv2d-34             [-1, 10, 1, 1]             320
+================================================================
+Total params: 48,736
+Trainable params: 48,736
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 2.81
+Params size (MB): 0.19
+Estimated Total Size (MB): 3.01
+----------------------------------------------------------------
+```
 ## utils.py 
 ### This file has 3 methods, "GetCorrectPredCount", "train" and "test" : 
 1. **GetCorrectPredCount :** This method counts the correct predictions by comparing the model prediction with ground truth and increments the count if the prediction is accurate. 
